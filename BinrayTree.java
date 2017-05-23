@@ -168,8 +168,21 @@ public class BinrayTree {
         }
     }
 
+    public int getHeight(){
+        return getHeight(root);
+    }
+
+    private int getHeight(Node node){
+        if(node == null){
+            return 0;
+        }
+        int left = getHeight(node.left);
+        int right = getHeight(node.right);
+        return 1+Math.max(left,right);
+    }
+
     public static void main(String[] args) {
-        int[] nums = {5, 3, 2, 4, 7, 6, 8};
+        int[] nums = {5, 3, 2, 4, 7, 6, 8,9,10};
         BinrayTree test = new BinrayTree();
         for(Integer tmp:nums){
             test.treeInsert(tmp);
@@ -178,5 +191,8 @@ public class BinrayTree {
         test.treeDelete(9);
         System.out.println();
         test.inorder();
+        System.out.println();
+        System.out.println(test.getHeight());
+
     }
 }
